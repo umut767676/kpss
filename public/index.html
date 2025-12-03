@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="tr" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gelecek ve İnovasyon Derneği | Future & Innovation Association</title>
+  <meta name="description" content="Iğdır merkezli Gelecek ve İnovasyon Derneği; Erasmus+, gençlik projeleri ve dijital dönüşüm odaklı çalışmalar yürüten bir sivil toplum kuruluşudur.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: '#0e4d92',
+            accent: '#f39200',
+            ink: '#0f172a',
+          },
+          fontFamily: {
+            sans: ['Manrope', 'system-ui', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    .hero-gradient {
+      background: radial-gradient(circle at 20% 20%, rgba(243,146,0,0.22), transparent 35%),
+                  radial-gradient(circle at 80% 0%, rgba(14,77,146,0.3), transparent 30%),
+                  linear-gradient(135deg, rgba(14,77,146,0.95), rgba(14,77,146,0.80));
+    }
+    .slide { opacity: 0; transition: opacity 0.8s ease; }
+    .slide.active { opacity: 1; }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans">
+  <header class="fixed inset-x-0 top-0 z-30 bg-white/90 backdrop-blur shadow-sm">
+    <div class="container mx-auto px-4">
+      <div class="flex items-center justify-between h-20">
+        <div class="flex items-center gap-3">
+          <div class="h-12 w-12 rounded-xl bg-brand text-white grid place-items-center font-extrabold text-xl shadow-inner">GI</div>
+          <div>
+            <p class="text-xs tracking-[0.25em] text-slate-500 font-semibold">IĞDIR, TÜRKİYE</p>
+            <p class="text-lg font-extrabold text-ink">Gelecek ve İnovasyon</p>
+          </div>
+        </div>
+        <nav class="hidden lg:flex items-center gap-6 text-sm font-semibold text-slate-600">
+          <a href="#hero" class="hover:text-brand">Ana Sayfa</a>
+          <a href="#about" class="hover:text-brand">Hakkımızda</a>
+          <a href="#programs" class="hover:text-brand">Çalışma Alanları</a>
+          <a href="#projects" class="hover:text-brand">Projeler</a>
+          <a href="#contact" class="hover:text-brand">İletişim</a>
+          <a href="#apply" class="ml-3 px-4 py-2 rounded-full bg-accent text-white shadow hover:-translate-y-0.5 transition">Başvuru Yap</a>
+        </nav>
+        <button id="mobile-toggle" class="lg:hidden text-2xl text-brand" aria-label="Menüyü aç">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5M3.75 17.25h16.5" />
+          </svg>
+        </button>
+      </div>
+    </div>
+    <div id="mobile-menu" class="lg:hidden fixed inset-x-0 top-20 bg-white shadow-xl border-t border-slate-200 hidden">
+      <div class="flex flex-col px-4 py-3 text-sm font-semibold text-slate-700 space-y-2">
+        <a class="py-2" href="#hero">Ana Sayfa</a>
+        <a class="py-2" href="#about">Hakkımızda</a>
+        <a class="py-2" href="#programs">Çalışma Alanları</a>
+        <a class="py-2" href="#projects">Projeler</a>
+        <a class="py-2" href="#contact">İletişim</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="hero" class="pt-24">
+    <section class="relative overflow-hidden">
+      <div class="absolute inset-0 hero-gradient"></div>
+      <div class="absolute inset-0 opacity-60 bg-[url('https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1600&q=80')] bg-cover bg-center mix-blend-overlay"></div>
+      <div class="container mx-auto px-4 relative z-10">
+        <div class="grid lg:grid-cols-2 gap-12 items-center py-16">
+          <div class="space-y-8 text-white">
+            <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 border border-white/20 text-xs font-semibold tracking-[0.2em]">GENÇLİK & ERASMUS+</span>
+            <h1 class="text-4xl lg:text-5xl font-extrabold leading-tight drop-shadow-lg">Gençler için inovasyon, eğitimciler için dijital dönüşüm</h1>
+            <p class="text-lg text-slate-100/90">Gelecek ve İnovasyon Derneği; STEM, sosyal içerme ve sürdürülebilir kalkınma odaklı projelerle gençlerin yetkinliğini artırır.</p>
+            <div class="flex flex-wrap gap-4">
+              <a href="#projects" class="px-6 py-3 bg-accent text-white font-bold rounded-full shadow hover:-translate-y-0.5 transition">Güncel Projeler</a>
+              <a href="#about" class="px-6 py-3 bg-white/10 text-white font-semibold rounded-full border border-white/30 hover:bg-white/20 transition">Derneği Tanıyın</a>
+            </div>
+            <div class="flex items-center gap-6 text-sm">
+              <div>
+                <p class="text-3xl font-extrabold">E10392941</p>
+                <p class="uppercase tracking-[0.2em] text-xs text-slate-100/80">OID</p>
+              </div>
+              <div class="h-12 w-px bg-white/30"></div>
+              <div class="space-y-1">
+                <p class="font-semibold">info@gelecekinovasyon.org</p>
+                <p class="font-semibold">+90 506 207 38 51</p>
+              </div>
+            </div>
+          </div>
+          <div class="bg-white rounded-3xl shadow-2xl p-6 lg:p-8 space-y-6">
+            <p class="text-sm font-semibold text-brand">SON BAŞARILAR</p>
+            <div class="space-y-4">
+              <div class="p-4 rounded-2xl border border-slate-100 bg-slate-50">
+                <p class="text-xs font-semibold text-accent">KA220-YOU</p>
+                <p class="text-lg font-bold text-ink">Dijital Okuryazarlık Hackathonu</p>
+                <p class="text-sm text-slate-600">Gençler için 3 ülkede düzenlenen inovasyon kampı.</p>
+              </div>
+              <div class="p-4 rounded-2xl border border-slate-100">
+                <p class="text-xs font-semibold text-accent">KA152</p>
+                <p class="text-lg font-bold text-ink">Sosyal Girişimcilik Köprüleri</p>
+                <p class="text-sm text-slate-600">İstihdamı destekleyen mentorluk ve mikro-hibe programı.</p>
+              </div>
+              <div class="p-4 rounded-2xl border border-slate-100 bg-slate-50">
+                <p class="text-xs font-semibold text-accent">Yerel Program</p>
+                <p class="text-lg font-bold text-ink">Kodlama Atölyeleri</p>
+                <p class="text-sm text-slate-600">Iğdır'da 120 gence yönelik ücretsiz temel kodlama eğitimleri.</p>
+              </div>
+            </div>
+            <div class="flex items-center gap-4">
+              <div class="h-12 w-12 rounded-full bg-brand text-white grid place-items-center font-bold">25+</div>
+              <div>
+                <p class="text-lg font-bold text-ink">Ulusal & uluslararası çözüm ortaklığı</p>
+                <p class="text-sm text-slate-600">STK'lar, belediyeler ve üniversitelerle güçlü ağ.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-[90%] lg:w-4/5 grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 gap-4 pb-8">
+        <div class="slide bg-white rounded-2xl shadow-xl p-5 space-y-2 active">
+          <p class="text-xs font-semibold text-accent">EĞİTİM</p>
+          <p class="text-xl font-bold text-ink">Öğretmenler için 21. yüzyıl becerileri</p>
+          <p class="text-sm text-slate-600">Dijital araç kullanımı, STEM ve kapsayıcı eğitim modülleri.</p>
+        </div>
+        <div class="slide bg-white rounded-2xl shadow-xl p-5 space-y-2">
+          <p class="text-xs font-semibold text-accent">KATILIM</p>
+          <p class="text-xl font-bold text-ink">Gençlik değişimleri & gönüllülük</p>
+          <p class="text-sm text-slate-600">Erasmus+ KA1 projeleriyle hareketlilik ve kültürlerarası öğrenme.</p>
+        </div>
+        <div class="slide bg-white rounded-2xl shadow-xl p-5 space-y-2">
+          <p class="text-xs font-semibold text-accent">DÖNÜŞÜM</p>
+          <p class="text-xl font-bold text-ink">Sürdürülebilir kalkınma girişimleri</p>
+          <p class="text-sm text-slate-600">Yeşil beceriler, çevre okuryazarlığı ve iklim eylemi atölyeleri.</p>
+        </div>
+        <div class="slide bg-white rounded-2xl shadow-xl p-5 space-y-2">
+          <p class="text-xs font-semibold text-accent">DANIŞMANLIK</p>
+          <p class="text-xl font-bold text-ink">Proje yazımı ve strateji tasarımı</p>
+          <p class="text-sm text-slate-600">KA220-YOU, KA210-VET ve ulusal hibelerde teknik destek.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="py-20">
+      <div class="container mx-auto px-4 grid lg:grid-cols-2 gap-12 items-center">
+        <div class="space-y-6">
+          <span class="px-3 py-1 rounded-full bg-brand/10 text-brand font-semibold text-sm">Biz kimiz?</span>
+          <h2 class="text-3xl lg:text-4xl font-extrabold text-ink">Gelecek ve İnovasyon Derneği</h2>
+          <p class="text-lg leading-relaxed text-slate-700">Iğdır merkezli derneğimiz; Erasmus+ başta olmak üzere ulusal ve uluslararası fonlarla gençlerin kapasitelerini artırır, eğitimcilerin dijital dönüşümüne katkı sunar. Sosyal içerme, girişimcilik ve yaşam boyu öğrenme temalarında kapsayıcı çalışmalar yürütüyoruz.</p>
+          <div class="grid sm:grid-cols-3 gap-4">
+            <div class="p-4 rounded-2xl bg-white shadow">
+              <p class="text-3xl font-extrabold text-brand">15+</p>
+              <p class="text-sm text-slate-600">tamamlanan proje</p>
+            </div>
+            <div class="p-4 rounded-2xl bg-white shadow">
+              <p class="text-3xl font-extrabold text-brand">300+</p>
+              <p class="text-sm text-slate-600">genç katılımcı</p>
+            </div>
+            <div class="p-4 rounded-2xl bg-white shadow">
+              <p class="text-3xl font-extrabold text-brand">8</p>
+              <p class="text-sm text-slate-600">aktif ortak ülke</p>
+            </div>
+          </div>
+        </div>
+        <div class="relative">
+          <div class="absolute inset-0 -left-6 -top-6 rounded-3xl bg-brand/10 blur-3xl"></div>
+          <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1000&q=80" alt="Ekip çalışması" class="relative rounded-3xl shadow-2xl border border-white">
+        </div>
+      </div>
+    </section>
+
+    <section id="programs" class="py-16 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="flex flex-col lg:flex-row items-start justify-between gap-6 mb-10">
+          <div>
+            <p class="text-sm font-semibold text-brand">Çalışma Alanlarımız</p>
+            <h3 class="text-3xl font-extrabold text-ink">Gençlik, eğitim ve dijital dönüşüm için çözümler</h3>
+          </div>
+          <a href="#contact" class="text-sm font-bold text-brand inline-flex items-center gap-2">İş birliği yapalım <span aria-hidden="true">→</span></a>
+        </div>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <article class="p-6 rounded-2xl bg-slate-50 border border-slate-100 shadow-sm">
+            <div class="h-12 w-12 rounded-xl bg-brand/10 text-brand grid place-items-center mb-4">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12h6m-6 4h6m-9 4h12a2 2 0 002-2V6a2 2 0 00-2-2h-7.586a2 2 0 00-1.414.586l-4.414 4.414A2 2 0 002 9.414V18a2 2 0 002 2h1" /></svg>
+            </div>
+            <h4 class="text-xl font-bold text-ink mb-2">Dijital Okuryazarlık</h4>
+            <p class="text-sm text-slate-600">STEM temelli eğitim modülleri, kodlama ve yapay zeka atölyeleri, çevrimiçi güvenlik.</p>
+          </article>
+          <article class="p-6 rounded-2xl bg-white border border-slate-100 shadow-sm">
+            <div class="h-12 w-12 rounded-xl bg-accent/10 text-accent grid place-items-center mb-4">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 5.25c0-1.243 1.007-2.25 2.25-2.25h13.5C19.993 3 21 4.007 21 5.25V12a9 9 0 01-9 9 9 9 0 01-9-9V5.25z" /></svg>
+            </div>
+            <h4 class="text-xl font-bold text-ink mb-2">Sosyal İçerme</h4>
+            <p class="text-sm text-slate-600">Dezavantajlı gençlerin güçlendirilmesi, mülteci gençler için mentorluk ve dil programları.</p>
+          </article>
+          <article class="p-6 rounded-2xl bg-slate-50 border border-slate-100 shadow-sm">
+            <div class="h-12 w-12 rounded-xl bg-brand/10 text-brand grid place-items-center mb-4">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6v6h6" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+            </div>
+            <h4 class="text-xl font-bold text-ink mb-2">Sürdürülebilir Kalkınma</h4>
+            <p class="text-sm text-slate-600">Yeşil beceriler, iklim eylemi projeleri ve topluluk temelli çevre girişimleri.</p>
+          </article>
+          <article class="p-6 rounded-2xl bg-white border border-slate-100 shadow-sm">
+            <div class="h-12 w-12 rounded-xl bg-accent/10 text-accent grid place-items-center mb-4">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8v8m-4-4h8m-5-9.5l.447.894a1 1 0 00.894.553h5.054a1 1 0 01.832 1.555l-2.527 3.79a1 1 0 00-.157.533v4.063a1 1 0 01-.553.894l-.894.447a1 1 0 00-.553.894V20.5a1 1 0 01-1.447.894L12 20.118l-3.126 1.663A1 1 0 017.427 20.5v-2.477a1 1 0 00-.553-.894l-.894-.447a1 1 0 01-.553-.894V11.3a1 1 0 00-.157-.533L2.743 7.502A1 1 0 013.575 5.95h5.054a1 1 0 00.894-.553L10 4.5a1 1 0 012 0z" /></svg>
+            </div>
+            <h4 class="text-xl font-bold text-ink mb-2">Girişimcilik & İstihdam</h4>
+            <p class="text-sm text-slate-600">Mentorluk, iş modeli geliştirme ve iş gücü piyasasına geçiş destekleri.</p>
+          </article>
+          <article class="p-6 rounded-2xl bg-slate-50 border border-slate-100 shadow-sm">
+            <div class="h-12 w-12 rounded-xl bg-brand/10 text-brand grid place-items-center mb-4">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4.5 12.75l6 6 9-13.5" /></svg>
+            </div>
+            <h4 class="text-xl font-bold text-ink mb-2">Proje Yönetimi</h4>
+            <p class="text-sm text-slate-600">KA220-YOU, KA210-VET ve yerel hibelerde koordinatörlük, raporlama ve yaygınlaştırma.</p>
+          </article>
+          <article class="p-6 rounded-2xl bg-white border border-slate-100 shadow-sm">
+            <div class="h-12 w-12 rounded-xl bg-accent/10 text-accent grid place-items-center mb-4">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6v6l4 2" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+            </div>
+            <h4 class="text-xl font-bold text-ink mb-2">Araştırma & Politika</h4>
+            <p class="text-sm text-slate-600">İhtiyaç analizi, etki ölçümü ve politika önerileriyle kanıta dayalı savunuculuk.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects" class="py-16 bg-slate-900 text-white">
+      <div class="container mx-auto px-4">
+        <div class="flex flex-col lg:flex-row justify-between items-start gap-6 mb-10">
+          <div>
+            <p class="text-sm font-semibold text-accent">Projeler</p>
+            <h3 class="text-3xl font-extrabold">Gençler için fırsatlar, kurumlar için güçlü ortaklıklar</h3>
+          </div>
+          <a href="#contact" class="text-sm font-bold text-white/80 inline-flex items-center gap-2 hover:text-white">Detaylı bilgi alın <span aria-hidden="true">→</span></a>
+        </div>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <article class="p-6 rounded-2xl bg-white/5 border border-white/10">
+            <p class="text-xs font-semibold text-accent">KA210-VET</p>
+            <h4 class="text-xl font-bold mt-2">Yeşil Meslekler Akademisi</h4>
+            <p class="text-sm text-white/70 mt-2">VET öğrencileri için yeşil beceri eğitimleri, mikro sertifikalar ve staj eşleştirmeleri.</p>
+          </article>
+          <article class="p-6 rounded-2xl bg-white/5 border border-white/10">
+            <p class="text-xs font-semibold text-accent">KA154-YOU</p>
+            <h4 class="text-xl font-bold mt-2">Gönüllü Liderler Ağı</h4>
+            <p class="text-sm text-white/70 mt-2">Yerelde gönüllülük kültürünü yaygınlaştıran akran liderliği ve sosyal etki kampanyaları.</p>
+          </article>
+          <article class="p-6 rounded-2xl bg-white/5 border border-white/10">
+            <p class="text-xs font-semibold text-accent">KA220-YOU</p>
+            <h4 class="text-xl font-bold mt-2">Dijital Dönüşüm Hub</h4>
+            <p class="text-sm text-white/70 mt-2">Açık eğitim kaynakları, çevrim içi mentor havuzu ve hibrit eğitim modellemeleri.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="apply" class="py-16 bg-white">
+      <div class="container mx-auto px-4 grid lg:grid-cols-2 gap-10 items-center">
+        <div class="space-y-4">
+          <p class="text-sm font-semibold text-brand">Katılın</p>
+          <h3 class="text-3xl font-extrabold text-ink">Gönüllü veya katılımcı olun</h3>
+          <p class="text-lg text-slate-700">Yeni eğitimler, hareketlilikler ve gönüllülük fırsatlarından haberdar olmak için formu doldurun. Ekibimiz en kısa sürede sizinle iletişime geçecek.</p>
+          <ul class="space-y-2 text-sm text-slate-700 list-disc list-inside">
+            <li>Gençlik değişimleri ve eğitim kursları</li>
+            <li>Yerel atölyeler ve hackathonlar</li>
+            <li>Mentorluk ve staj fırsatları</li>
+          </ul>
+        </div>
+        <form class="bg-slate-50 rounded-3xl p-6 shadow space-y-4" name="apply-form">
+          <div>
+            <label class="text-sm font-semibold text-slate-700">Ad Soyad</label>
+            <input class="mt-2 w-full rounded-xl border border-slate-200 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-brand/40" required>
+          </div>
+          <div class="grid sm:grid-cols-2 gap-4">
+            <div>
+              <label class="text-sm font-semibold text-slate-700">E-posta</label>
+              <input type="email" class="mt-2 w-full rounded-xl border border-slate-200 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-brand/40" required>
+            </div>
+            <div>
+              <label class="text-sm font-semibold text-slate-700">Telefon</label>
+              <input class="mt-2 w-full rounded-xl border border-slate-200 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-brand/40">
+            </div>
+          </div>
+          <div>
+            <label class="text-sm font-semibold text-slate-700">İlgi Alanı</label>
+            <select class="mt-2 w-full rounded-xl border border-slate-200 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-brand/40">
+              <option>Gençlik projeleri</option>
+              <option>Gönüllülük</option>
+              <option>STEM eğitimleri</option>
+              <option>Girişimcilik</option>
+            </select>
+          </div>
+          <div>
+            <label class="text-sm font-semibold text-slate-700">Mesajınız</label>
+            <textarea rows="3" class="mt-2 w-full rounded-xl border border-slate-200 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-brand/40" placeholder="Kısa bir not bırakın"></textarea>
+          </div>
+          <button type="submit" class="w-full bg-brand text-white font-bold py-3 rounded-xl shadow hover:bg-ink transition">Başvuru Gönder</button>
+          <p id="form-feedback" class="text-sm font-semibold text-green-700 hidden">Başvurunuz alındı. Teşekkürler!</p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer id="contact" class="bg-ink text-slate-200 py-14">
+    <div class="container mx-auto px-4 grid lg:grid-cols-4 gap-10">
+      <div class="space-y-3">
+        <p class="text-sm tracking-[0.2em] text-accent font-semibold">GELECEK & İNOVASYON</p>
+        <p class="text-lg font-extrabold">Future and Innovation Association</p>
+        <p class="text-sm text-slate-400">Gençlik STK'sı | Kar amacı gütmeyen</p>
+      </div>
+      <div>
+        <h5 class="text-sm font-semibold text-white mb-3">İletişim</h5>
+        <ul class="space-y-2 text-sm">
+          <li>info@gelecekinovasyon.org</li>
+          <li>+90 506 207 38 51</li>
+          <li>Iğdır Merkez, Iğdır / Türkiye, 76000</li>
+        </ul>
+      </div>
+      <div>
+        <h5 class="text-sm font-semibold text-white mb-3">Bağlantılar</h5>
+        <ul class="space-y-2 text-sm">
+          <li><a class="hover:text-white" href="#about">Hakkımızda</a></li>
+          <li><a class="hover:text-white" href="#projects">Projeler</a></li>
+          <li><a class="hover:text-white" href="#apply">Gönüllülük</a></li>
+        </ul>
+      </div>
+      <div class="space-y-3">
+        <h5 class="text-sm font-semibold text-white">Bülten</h5>
+        <form class="space-y-3" id="newsletter-form">
+          <input type="email" required placeholder="E-posta adresiniz" class="w-full rounded-lg border border-slate-700 bg-slate-900 px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-accent/40">
+          <button class="w-full bg-accent text-white font-bold py-3 rounded-lg hover:bg-brand transition">Kaydol</button>
+          <p id="newsletter-feedback" class="text-xs text-green-400 hidden">Kaydınız alındı!</p>
+        </form>
+      </div>
+    </div>
+    <div class="mt-10 border-t border-white/10 pt-4 text-center text-xs text-slate-500">© 2025 Gelecek ve İnovasyon Derneği.</div>
+  </footer>
+
+  <script>
+    const slides = Array.from(document.querySelectorAll('.slide'));
+    let activeIndex = 0;
+    setInterval(() => {
+      slides[activeIndex].classList.remove('active');
+      activeIndex = (activeIndex + 1) % slides.length;
+      slides[activeIndex].classList.add('active');
+    }, 4500);
+
+    document.getElementById('mobile-toggle').addEventListener('click', () => {
+      document.getElementById('mobile-menu').classList.toggle('hidden');
+    });
+
+    document.forms['apply-form'].addEventListener('submit', (e) => {
+      e.preventDefault();
+      const feedback = document.getElementById('form-feedback');
+      feedback.classList.remove('hidden');
+      e.target.reset();
+      setTimeout(() => feedback.classList.add('hidden'), 3000);
+    });
+
+    document.getElementById('newsletter-form').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const feedback = document.getElementById('newsletter-feedback');
+      feedback.classList.remove('hidden');
+      e.target.reset();
+      setTimeout(() => feedback.classList.add('hidden'), 3000);
+    });
+  </script>
+</body>
+</html>
