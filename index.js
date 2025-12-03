@@ -1,21 +1,20 @@
-import express from 'express';
-import bodyParser from 'body-parser';
-import { db } from './firebase.js';
+import express from "express";
+import { db } from "./firebase.js";
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-app.use(bodyParser.json());
+app.use(express.json());
+app.use(express.static("public"));
 
-app.post('/webhook', async (req, res) => {
+app.post("/webhook", async (req, res) => {
   try {
     const data = req.body;
 
     if (!data || Object.keys(data).length === 0) {
-      return res.status(400).send('Boş veri geldi.');
+      return res.status(400).send("Boş veri geldi.");
     }
 
-    // Gerekli alanları al
     const {
       "Kurum Adı": kurum,
       "Pozisyon Unvanı": unvan,
@@ -26,11 +25,10 @@ app.post('/webhook', async (req, res) => {
       "Eğitim Düzeyi": egitim,
       "Başvuru Başlangıç": baslangic,
       "Başvuru Bitiş": bitis,
-      "Detay Linki": link
+      "Detay Linki": link,
     } = data;
 
-    // Firestore'a kaydet
-    const docRef = await db.collection('ilanlar').add({
+    const docRef = await db.collection("ilanlar").add({
       kurum,
       unvan,
       kadro,
@@ -41,15 +39,14 @@ app.post('/webhook', async (req, res) => {
       baslangic,
       bitis,
       link,
-      createdAt: new Date().toISOString()
+      createdAt: new Date().toISOString(),
     });
 
-    console.log('📦 Yeni ilan eklendi:', docRef.id);
-    res.status(200).send('Veri başarıyla eklendi.');
-
+    console.log("📦 Yeni ilan eklendi:", docRef.id);
+    res.status(200).send("Veri başarıyla eklendi.");
   } catch (error) {
-    console.error('🔥 Hata:', error.message);
-    res.status(500).send('Sunucu hatası.');
+    console.error("🔥 Hata:", error.message);
+    res.status(500).send("Sunucu hatası.");
   }
 });
 
