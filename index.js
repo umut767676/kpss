@@ -1,11 +1,15 @@
 import express from 'express';
-import bodyParser from 'body-parser';
+import path from 'path';
+import { fileURLToPath } from 'url';
 import { db } from './firebase.js';
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-app.use(bodyParser.json());
+app.use(express.json());
+app.use(express.static(path.join(__dirname, 'public')));
 
 app.post('/webhook', async (req, res) => {
   try {
