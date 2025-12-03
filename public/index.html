@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="tr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gelecek ve İnovasyon Derneği - Future and Innovation Association</title>
+    <meta name="description" content="Iğdır merkezli Gelecek ve İnovasyon Derneği; Erasmus+, gençlik projeleri ve dijital dönüşüm odaklı çalışmalar yürüten bir sivil toplum kuruluşudur.">
+    <meta name="keywords" content="Gelecek İnovasyon, Iğdır STK, Erasmus+, Gençlik Derneği, Proje Yönetimi">
+    <link rel="icon" type="image/png" href="https://ui-avatars.com/api/?name=GID&background=005b8e&color=fff">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Fontlar -->
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&family=Manrope:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- İkonlar -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- SweetAlert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'brand-blue': '#005b8e',
+                        'brand-dark': '#0f172a',
+                        'brand-orange': '#f39200',
+                        'light-gray': '#f8fafc',
+                    },
+                    fontFamily: {
+                        sans: ['IBM Plex Sans', 'sans-serif'],
+                        heading: ['Manrope', 'sans-serif'],
+                    },
+                    boxShadow: {
+                        'soft': '0 10px 40px -10px rgba(0,0,0,0.08)',
+                        'curved': '10px 0 30px rgba(0,0,0,0.15)',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        .slide { opacity: 0; transition: opacity 1s ease-in-out, transform 8s ease; position: absolute; inset: 0; z-index: 0; transform: scale(1.1);} 
+        .slide.active { opacity: 1; z-index: 10; transform: scale(1);} 
+        .hero-gradient-overlay { background: linear-gradient(105deg, rgba(0, 91, 142, 0.95) 0%, rgba(0, 91, 142, 0.7) 40%, rgba(243, 146, 0, 0.6) 80%, rgba(243, 146, 0, 0.8) 100%); mix-blend-mode: multiply; }
+        .curved-sidebar { background: rgba(0, 91, 142, 0.95); backdrop-filter: blur(10px); border-top-right-radius: 60px; border-bottom-right-radius: 60px; box-shadow: 10px 0 30px rgba(0,0,0,0.2); border-right: 1px solid rgba(255,255,255,0.1); }
+        .tab-btn.active { background-color: white; color: #005b8e; font-weight: 700; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);} 
+        .admin-input { width: 100%; padding: 0.75rem; border: 1px solid #e5e7eb; border-radius: 0.5rem; margin-bottom: 1rem; outline: none; font-size: 0.9rem;} 
+        .admin-input:focus { border-color: #005b8e; ring: 2px solid #005b8e; }
+    </style>
+</head>
+<body class="font-sans text-gray-700 bg-white">
+    <div id="app-container" class="relative">
+        <div id="public-view">
+            <div id="mobile-menu-overlay" class="fixed inset-0 bg-black/60 z-[90] hidden transition-opacity" onclick="toggleMobileMenu()"></div>
+            <div id="mobile-menu" class="fixed top-0 right-0 h-full w-80 bg-white z-[100] transform translate-x-full transition-transform duration-300 shadow-2xl flex flex-col overflow-y-auto">
+                <div class="p-5 border-b border-gray-100 flex justify-between items-center bg-brand-blue text-white">
+                    <span class="font-bold text-lg">MENÜ</span>
+                    <button onclick="toggleMobileMenu()" class="text-white hover:text-brand-orange"><i class="fas fa-times text-2xl"></i></button>
+                </div>
+                <div class="p-6 flex-1 space-y-4">
+                    <a href="#" onclick="toggleMobileMenu()" class="block font-semibold text-gray-700 border-b pb-2">Ana Sayfa</a>
+                    <a href="#hakkimizda" onclick="toggleMobileMenu()" class="block font-semibold text-gray-700 border-b pb-2">Hakkımızda</a>
+                    <a href="#ekip" onclick="toggleMobileMenu()" class="block font-semibold text-gray-700 border-b pb-2">Ekibimiz</a>
+                    <a href="#projeler" onclick="toggleMobileMenu()" class="block font-semibold text-gray-700 border-b pb-2">Projeler</a>
+                    <a href="#iletisim" onclick="toggleMobileMenu()" class="block font-semibold text-gray-700">İletişim</a>
+                </div>
+            </div>
+
+            <div class="hidden lg:block bg-white border-b border-gray-200 py-2">
+                <div class="container mx-auto px-4 flex justify-between items-center">
+                    <div class="text-xs text-gray-500 font-medium italic">OID: <span class="font-bold text-brand-blue">E10392941</span></div>
+                    <div class="flex items-center gap-6 text-xs font-bold text-gray-600">
+                        <a href="mailto:info@gelecekinovasyon.org" class="flex items-center gap-2 hover:text-brand-blue transition">
+                            <i class="fas fa-envelope text-brand-orange"></i> <span class="dynamic-email">info@gelecekinovasyon.org</span>
+                        </a>
+                        <a href="tel:+905062073851" class="flex items-center gap-2 hover:text-brand-blue transition">
+                            <i class="fas fa-phone text-brand-orange"></i> <span class="dynamic-phone">+90 506 207 38 51</span>
+                        </a>
+                        <div class="flex items-center gap-1">
+                            <a href="#" class="text-brand-blue">TR</a> | <a href="#" class="text-gray-400 hover:text-brand-blue">EN</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <nav class="bg-white sticky top-0 z-50 shadow-md">
+                <div class="container mx-auto px-4">
+                    <div class="flex justify-between items-center h-24">
+                        <div class="lg:hidden flex items-center gap-2">
+                            <div class="w-10 h-10 bg-brand-blue text-white flex items-center justify-center rounded-full font-bold text-xl">G</div>
+                            <div class="leading-tight"><span class="block font-bold text-brand-blue">GELECEK</span><span class="block text-[10px] text-brand-orange font-bold">İNOVASYON</span></div>
+                        </div>
+                        <div class="hidden lg:flex items-center w-full justify-end gap-3 text-sm font-bold text-gray-600">
+                            <a href="#" class="px-3 py-6 hover:text-brand-blue transition border-b-2 border-transparent hover:border-brand-blue">ANASAYFA</a>
+                            <div class="relative group">
+                                <button class="px-3 py-6 hover:text-brand-blue flex items-center gap-1 transition">
+                                    KURUMSAL <i class="fas fa-chevron-down text-[10px] text-brand-orange"></i>
+                                </button>
+                                <div class="absolute top-full left-0 w-64 bg-white shadow-xl border-t-4 border-brand-blue hidden group-hover:block transition-all z-50 rounded-b-lg">
+                                    <a href="#hakkimizda" class="block px-4 py-3 hover:bg-gray-50 border-b border-gray-100">Hakkımızda</a>
+                                    <a href="#ekip" class="block px-4 py-3 hover:bg-gray-50 border-b border-gray-100">Kilit Personel & Ekip</a>
+                                    <a href="#kurumsal-bilgiler" class="block px-4 py-3 hover:bg-gray-50">Kurumsal Bilgiler</a>
+                                </div>
+                            </div>
+                            <a href="#projeler" class="px-3 py-6 hover:text-brand-blue transition">PROJELER</a>
+                            <a href="#faaliyetler" class="px-3 py-6 hover:text-brand-blue transition">FAALİYETLER</a>
+                            <a href="#iletisim" class="px-3 py-6 hover:text-brand-blue transition">İLETİŞİM</a>
+                            <button class="ml-4 bg-brand-orange text-white px-6 py-2.5 rounded-full hover:bg-brand-blue transition shadow-lg flex items-center gap-2">
+                                <i class="fas fa-paper-plane"></i> Başvuru Yap
+                            </button>
+                        </div>
+                        <button onclick="toggleMobileMenu()" class="lg:hidden text-2xl text-brand-blue p-2"><i class="fas fa-bars"></i></button>
+                    </div>
+                </div>
+            </nav>
+
+            <header class="relative h-[650px] lg:h-[750px] overflow-hidden bg-brand-dark group">
+                <div class="hidden lg:flex absolute left-0 top-0 bottom-0 w-[280px] curved-sidebar z-40 flex-col py-10 px-6 justify-between shadow-2xl">
+                    <div class="flex flex-col items-center mt-6">
+                        <div class="w-24 h-24 bg-white rounded-full flex items-center justify-center shadow-lg mb-4">
+                            <div class="text-center leading-none">
+                                <i class="fas fa-atom text-4xl text-brand-blue mb-1 block"></i>
+                            </div>
+                        </div>
+                        <h1 class="text-white font-heading font-bold text-xl text-center leading-tight">
+                            GELECEK VE<br><span class="text-brand-orange font-light tracking-widest">İNOVASYON</span>
+                        </h1>
+                        <p class="text-gray-400 text-[10px] mt-2 text-center">Future and Innovation Association</p>
+                    </div>
+
+                    <div class="space-y-4 mb-4 pl-2 border-t border-gray-600 pt-6">
+                        <a href="#projeler" class="flex items-center gap-3 text-white/80 hover:text-brand-orange transition group">
+                            <i class="fas fa-project-diagram text-lg"></i>
+                            <span class="font-medium text-sm">Erasmus+ Projeleri</span>
+                        </a>
+                        <a href="#iletisim" class="flex items-center gap-3 text-white/80 hover:text-brand-orange transition group">
+                            <i class="fas fa-users text-lg"></i>
+                            <span class="font-medium text-sm">Gönüllü Ol</span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="slide active">
+                    <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=1950&q=80" class="w-full h-full object-cover" alt="İnovasyon">
+                    <div class="absolute inset-0 hero-gradient-overlay z-10"></div>
+                    <div class="absolute inset-0 z-20 flex items-end pb-24 pl-8 lg:pl-80 pr-8">
+                        <div class="container mx-auto">
+                            <span class="bg-brand-orange text-white px-3 py-1 rounded text-xs font-bold mb-4 inline-block">IĞDIR / TÜRKİYE</span>
+                            <h2 class="text-5xl lg:text-7xl font-heading font-extrabold text-white mb-4 drop-shadow-lg tracking-tight">Yenilik ve Dijital Dönüşüm</h2>
+                            <p class="text-white/90 text-lg lg:text-xl font-light mb-8 max-w-2xl drop-shadow leading-relaxed">STEM ve bilişim teknolojileri tabanlı eğitim programları ile gençler arasında dijital okuryazarlığı artırıyoruz.</p>
+                            <a href="#hakkimizda" class="text-brand-orange font-bold text-lg hover:text-white transition flex items-center gap-2 group">Keşfet <i class="fas fa-arrow-right group-hover:translate-x-2 transition"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="slide">
+                    <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=1950&q=80" class="w-full h-full object-cover" alt="Gençlik">
+                    <div class="absolute inset-0 hero-gradient-overlay z-10"></div>
+                    <div class="absolute inset-0 z-20 flex items-end pb-24 pl-8 lg:pl-80 pr-8">
+                        <div class="container mx-auto">
+                            <h2 class="text-5xl lg:text-7xl font-heading font-extrabold text-white mb-4 drop-shadow-lg tracking-tight">Erasmus+ Fırsatları</h2>
+                            <p class="text-white/90 text-lg lg:text-xl font-light mb-8 max-w-2xl drop-shadow leading-relaxed">Gençlik değişimleri, eğitim kursları ve stratejik ortaklık projeleri.</p>
+                            <a href="#projeler" class="text-brand-orange font-bold text-lg hover:text-white transition flex items-center gap-2 group">Detaylar <i class="fas fa-arrow-right group-hover:translate-x-2 transition"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="absolute bottom-12 right-12 z-30 flex gap-4">
+                    <button onclick="changeSlide(-1)" class="w-12 h-12 rounded-full border border-white/30 text-white flex items-center justify-center hover:bg-white hover:text-brand-blue transition backdrop-blur-sm"><i class="fas fa-chevron-left"></i></button>
+                    <button onclick="changeSlide(1)" class="w-12 h-12 rounded-full border border-white/30 text-white flex items-center justify-center hover:bg-white hover:text-brand-blue transition backdrop-blur-sm"><i class="fas fa-chevron-right"></i></button>
+                </div>
+            </header>
+
+            <section class="py-16 bg-light-gray relative z-20 -mt-10 lg:-mt-20">
+                <div class="container mx-auto px-4">
+                    <div class="bg-white rounded-3xl shadow-xl p-8 grid grid-cols-2 md:grid-cols-4 gap-8">
+                        <div class="text-center group cursor-pointer">
+                            <div class="w-20 h-20 mx-auto bg-blue-50 rounded-full flex items-center justify-center text-brand-blue text-3xl mb-4 group-hover:bg-brand-blue group-hover:text-white transition">
+                                <i class="fas fa-graduation-cap"></i>
+                            </div>
+                            <h3 class="font-bold text-gray-800">Kapasite Geliştirme</h3>
+                        </div>
+                        <div class="text-center group cursor-pointer">
+                            <div class="w-20 h-20 mx-auto bg-orange-50 rounded-full flex items-center justify-center text-brand-orange text-3xl mb-4 group-hover:bg-brand-orange group-hover:text-white transition">
+                                <i class="fas fa-globe-europe"></i>
+                            </div>
+                            <h3 class="font-bold text-gray-800">Erasmus+ KA1 & KA2</h3>
+                        </div>
+                        <div class="text-center group cursor-pointer">
+                            <div class="w-20 h-20 mx-auto bg-green-50 rounded-full flex items-center justify-center text-green-600 text-3xl mb-4 group-hover:bg-green-600 group-hover:text-white transition">
+                                <i class="fas fa-leaf"></i>
+                            </div>
+                            <h3 class="font-bold text-gray-800">Sürdürülebilir Kalkınma</h3>
+                        </div>
+                        <div class="text-center group cursor-pointer">
+                            <div class="w-20 h-20 mx-auto bg-purple-50 rounded-full flex items-center justify-center text-purple-600 text-3xl mb-4 group-hover:bg-purple-600 group-hover:text-white transition">
+                                <i class="fas fa-hands-helping"></i>
+                            </div>
+                            <h3 class="font-bold text-gray-800">Sosyal İçerme</h3>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="hakkimizda" class="py-20 bg-white">
+                <div class="container mx-auto px-4 flex flex-col lg:flex-row items-start gap-12">
+                    <div class="lg:w-1/2">
+                        <span class="text-brand-blue font-bold tracking-widest uppercase text-sm block mb-2">BİZ KİMİZ?</span>
+                        <h2 class="text-4xl font-heading font-extrabold text-brand-dark mb-6" id="dynamic-about-title">Gelecek ve İnovasyon Derneği</h2>
+                        <div class="text-gray-600 text-lg leading-relaxed space-y-4" id="dynamic-about-text">
+                            <p>Gelecek ve İnovasyon Derneği (Future and Innovation Association), Iğdır, Türkiye merkezli yeni bir sivil toplum kuruluşudur. Dernek, yerel, ulusal ve uluslararası projeler aracılığıyla gençleri ve eğitimcileri güçlendirmeyi hedeflemektedir.</p>
+                            <p>Çalışma alanları arasında eğitim, sosyal içermeye yönelik projeler, girişimcilik, yenilikçilik ve yaşam boyu öğrenme bulunmaktadır. Erasmus+ ve ulusal hibe programlarında uzmanlaşan dernek, kapasite geliştirme, genç katılımı ve dijital dönüşüm konularını teşvik etmektedir.</p>
+                        </div>
+                        <div class="grid grid-cols-2 gap-4 mt-8">
+                            <div class="bg-gray-50 p-4 rounded-lg border-l-4 border-brand-orange">
+                                <span class="block font-bold text-brand-dark">OID</span>
+                                <span class="text-gray-600">E10392941</span>
+                            </div>
+                            <div class="bg-gray-50 p-4 rounded-lg border-l-4 border-brand-blue">
+                                <span class="block font-bold text-brand-dark">Kuruluş Türü</span>
+                                <span class="text-gray-600">Gençlik STK'sı</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="lg:w-1/2">
+                        <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=80" alt="Dernek Toplantı" class="rounded-2xl shadow-xl w-full object-cover h-[500px]">
+                    </div>
+                </div>
+            </section>
+
+            <section id="ekip" class="py-20 bg-gray-50">
+                <div class="container mx-auto px-4">
+                    <div class="text-center mb-16">
+                        <span class="text-brand-orange font-bold tracking-widest uppercase text-sm">PROFESYONEL EKİBİMİZ</span>
+                        <h2 class="text-4xl font-heading font-extrabold text-brand-dark mt-2">Kilit Personel</h2>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                        <div class="bg-white rounded-xl overflow-hidden shadow-lg hover:-translate-y-2 transition duration-300">
+                            <div class="h-2 bg-brand-blue"></div>
+                            <div class="p-8 text-center">
+                                <div class="w-24 h-24 mx-auto bg-gray-200 rounded-full mb-4 overflow-hidden">
+                                    <img src="https://ui-avatars.com/api/?name=Taylan+G%C3%BCl&background=005b8e&color=fff" alt="Taylan Gül">
+                                </div>
+                                <h3 class="text-xl font-bold text-brand-dark">Taylan Gül</h3>
+                                <p class="text-brand-orange font-medium text-sm mb-4">Başkan / Yasal Temsilci</p>
+                                <p class="text-gray-600 text-sm mb-4">Tarih Öğretmeni, Eğitim & Gençlik Proje Uzmanı. Eğitim politikaları ve müfredat geliştirme konularında deneyimli.</p>
+                                <a href="tel:+905541239890" class="text-brand-blue text-sm hover:underline"><i class="fas fa-phone"></i> +90 554 123 9890</a>
+                            </div>
+                        </div>
+
+                        <div class="bg-white rounded-xl overflow-hidden shadow-lg hover:-translate-y-2 transition duration-300">
+                            <div class="h-2 bg-brand-orange"></div>
+                            <div class="p-8 text-center">
+                                <div class="w-24 h-24 mx-auto bg-gray-200 rounded-full mb-4 overflow-hidden">
+                                    <img src="https://ui-avatars.com/api/?name=Adnan+Ok&background=f39200&color=fff" alt="Adnan Ok">
+                                </div>
+                                <h3 class="text-xl font-bold text-brand-dark">Adnan Ok</h3>
+                                <p class="text-brand-orange font-medium text-sm mb-4">Eğitim & Proje Yöneticisi</p>
+                                <p class="text-gray-600 text-sm mb-4">Iğdır Milli Eğitim Müdürlüğü’nde Projeler Ofisi Başkanı olarak Erasmus+ projeleri ve ulusal hibeleri yönetmiştir.</p>
+                            </div>
+                        </div>
+
+                        <div class="bg-white rounded-xl overflow-hidden shadow-lg hover:-translate-y-2 transition duration-300">
+                            <div class="h-2 bg-brand-blue"></div>
+                            <div class="p-8 text-center">
+                                <div class="w-24 h-24 mx-auto bg-gray-200 rounded-full mb-4 overflow-hidden">
+                                    <img src="https://ui-avatars.com/api/?name=Onur+G%C3%BCltekin&background=005b8e&color=fff" alt="Onur Gültekin">
+                                </div>
+                                <h3 class="text-xl font-bold text-brand-dark">Onur Gültekin</h3>
+                                <p class="text-brand-orange font-medium text-sm mb-4">Proje Koordinatörü</p>
+                                <p class="text-gray-600 text-sm mb-4">Kıdemli Proje Uzmanı & STK Kurucusu. Sosyal girişimcilik ve dijital okuryazarlık alanlarında uzman.</p>
+                                <a href="tel:+905062073851" class="text-brand-blue text-sm hover:underline"><i class="fas fa-phone"></i> +90 506 207 38 51</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="faaliyetler" class="py-16 bg-brand-blue text-white">
+                <div class="container mx-auto px-4">
+                    <div class="text-center mb-10">
+                        <h2 class="text-3xl font-bold">Faaliyetlerimiz ve Deneyimler</h2>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <div class="bg-white/10 p-6 rounded-lg border border-white/20 hover:bg-white/20 transition">
+                            <div class="text-brand-orange text-3xl mb-4"><i class="fas fa-chalkboard-teacher"></i></div>
+                            <h3 class="font-bold text-xl mb-2">Kapasite Geliştirme</h3>
+                            <p class="text-sm text-gray-200">Öğretmenler ve gençlik çalışanları için 21. yüzyıl becerileri üzerine atölye ve seminerler.</p>
+                        </div>
+                        <div class="bg-white/10 p-6 rounded-lg border border-white/20 hover:bg-white/20 transition">
+                            <div class="text-brand-orange text-3xl mb-4"><i class="fas fa-plane-departure"></i></div>
+                            <h3 class="font-bold text-xl mb-2">Erasmus+ Projeleri</h3>
+                            <p class="text-sm text-gray-200">KA1 & KA2 gençlik değişimleri, eğitim kursları ve stratejik ortaklık projeleri.</p>
+                        </div>
+                        <div class="bg-white/10 p-6 rounded-lg border border-white/20 hover:bg-white/20 transition">
+                            <div class="text-brand-orange text-3xl mb-4"><i class="fas fa-laptop-code"></i></div>
+                            <h3 class="font-bold text-xl mb-2">Dijital Dönüşüm</h3>
+                            <p class="text-sm text-gray-200">STEM tabanlı eğitim programları ile dijital okuryazarlığın artırılması.</p>
+                        </div>
+                        <div class="bg-white/10 p-6 rounded-lg border border-white/20 hover:bg-white/20 transition">
+                            <div class="text-brand-orange text-3xl mb-4"><i class="fas fa-users"></i></div>
+                            <h3 class="font-bold text-xl mb-2">Sosyal İçerme</h3>
+                            <p class="text-sm text-gray-200">Dezavantajlı gruplar ve mülteciler için fırsat eşitliği sağlayan projeler.</p>
+                        </div>
+                        <div class="bg-white/10 p-6 rounded-lg border border-white/20 hover:bg-white/20 transition">
+                            <div class="text-brand-orange text-3xl mb-4"><i class="fas fa-project-diagram"></i></div>
+                            <h3 class="font-bold text-xl mb-2">Proje Yönetimi</h3>
+                            <p class="text-sm text-gray-200">KA220-YOU, KA210-VET ve KA152 projelerinde koordinatörlük ve ortaklık deneyimi.</p>
+                        </div>
+                        <div class="bg-white/10 p-6 rounded-lg border border-white/20 hover:bg-white/20 transition">
+                            <div class="text-brand-orange text-3xl mb-4"><i class="fas fa-rocket"></i></div>
+                            <h3 class="font-bold text-xl mb-2">Girişimcilik</h3>
+                            <p class="text-sm text-gray-200">Genç girişimciler için mentorluk programları ve kuluçka merkezleri.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <footer id="iletisim" class="bg-brand-dark text-gray-400 pt-16 pb-8">
+                <div class="container mx-auto px-4">
+                    <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8 mb-12">
+                        <div class="col-span-1">
+                            <div class="mb-4">
+                                <span class="block font-bold text-white text-xl">GELECEK VE İNOVASYON</span>
+                                <span class="block text-brand-orange text-xs font-bold">DERNEĞİ</span>
+                            </div>
+                            <p class="text-sm mb-4">Future and Innovation Association</p>
+                            <div class="text-xs bg-gray-800 p-2 rounded mb-4">
+                                <strong>OID:</strong> E10392941<br>
+                                <strong>Tür:</strong> Gençlik STK'sı<br>
+                                <strong>Kar Amacı Gütmeyen:</strong> Evet
+                            </div>
+                        </div>
+
+                        <div>
+                            <h4 class="text-white font-bold mb-4 text-lg">Kurumsal</h4>
+                            <ul class="space-y-2 text-sm">
+                                <li><a href="#hakkimizda" class="hover:text-white">Hakkımızda</a></li>
+                                <li><a href="#ekip" class="hover:text-white">Yönetim Kurulu</a></li>
+                                <li><a href="#" class="hover:text-white">Tüzük</a></li>
+                            </ul>
+                        </div>
+
+                        <div>
+                            <h4 class="text-white font-bold mb-4 text-lg">Faaliyetler</h4>
+                            <ul class="space-y-2 text-sm">
+                                <li><a href="#" class="hover:text-white">Erasmus+</a></li>
+                                <li><a href="#" class="hover:text-white">STEM Eğitimi</a></li>
+                                <li><a href="#" class="hover:text-white">Sosyal Girişimcilik</a></li>
+                            </ul>
+                        </div>
+
+                        <div>
+                            <h4 class="text-white font-bold mb-4 text-lg">İletişim</h4>
+                            <p class="text-sm mb-2 flex items-start gap-2">
+                                <i class="fas fa-map-marker-alt mt-1 text-brand-orange"></i> 
+                                <span class="dynamic-address">Iğdır Merkez, Iğdır / Türkiye, 76000</span>
+                            </p>
+                            <p class="text-sm mb-2 flex items-center gap-2">
+                                <i class="fas fa-phone text-brand-orange"></i> 
+                                <span class="dynamic-phone">+90 506 207 38 51</span>
+                            </p>
+                            <p class="text-sm mb-2 flex items-center gap-2">
+                                <i class="fas fa-envelope text-brand-orange"></i> 
+                                <span class="dynamic-email">info@gelecekinovasyon.org</span>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="border-t border-gray-800 pt-8 flex justify-between items-center text-xs">
+                        <div>© 2025 Gelecek ve İnovasyon Derneği.</div>
+                        <button onclick="showLogin()" class="text-gray-500 hover:text-white flex items-center gap-1"><i class="fas fa-lock text-[10px]"></i> Yönetici</button>
+                    </div>
+                </div>
+            </footer>
+        </div>
+
+        <div id="login-view" class="fixed inset-0 bg-brand-dark z-[200] hidden flex items-center justify-center">
+            <div class="bg-white p-8 rounded-2xl shadow-2xl w-96 text-center">
+                <h2 class="text-2xl font-bold text-brand-blue mb-2">Yönetici Paneli</h2>
+                <p class="text-gray-500 mb-6 text-sm">Giriş Yapın</p>
+                <form onsubmit="handleLogin(event)" class="space-y-4">
+                    <input type="text" id="username" class="admin-input" placeholder="Kullanıcı Adı: admin">
+                    <input type="password" id="password" class="admin-input" placeholder="Şifre: 1234">
+                    <div class="flex gap-2">
+                        <button type="button" onclick="showPublic()" class="w-1/2 py-2 text-gray-500 hover:bg-gray-100 rounded">İptal</button>
+                        <button type="submit" class="w-1/2 bg-brand-blue text-white py-2 rounded font-bold hover:bg-brand-dark">Giriş</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div id="admin-view" class="fixed inset-0 bg-gray-100 z-[200] hidden flex">
+            <div class="w-64 bg-brand-dark text-white flex flex-col p-4">
+                <h2 class="text-xl font-bold mb-8 text-center text-brand-orange">YÖNETİM</h2>
+                <nav class="space-y-2 flex-1">
+                    <button onclick="switchAdminTab('content')" class="w-full text-left px-4 py-3 rounded hover:bg-white/10 flex items-center gap-2"><i class="fas fa-edit"></i> İçerik Düzenle</button>
+                    <button onclick="switchAdminTab('contact')" class="w-full text-left px-4 py-3 rounded hover:bg-white/10 flex items-center gap-2"><i class="fas fa-address-book"></i> İletişim</button>
+                </nav>
+                <button onclick="showPublic()" class="mt-auto py-2 text-sm text-gray-400 hover:text-white">Çıkış Yap</button>
+            </div>
+
+            <div class="flex-1 p-8 overflow-y-auto">
+                <div id="admin-content-tab" class="admin-tab">
+                    <h2 class="text-2xl font-bold mb-6 text-gray-800">Site İçeriklerini Düzenle</h2>
+                    <div class="bg-white p-6 rounded-lg shadow space-y-4">
+                        <label class="block font-bold mb-1">Hakkımızda Başlığı</label>
+                        <input type="text" id="edit-about-title" class="admin-input">
+                        <label class="block font-bold mb-1">Hakkımızda Metni</label>
+                        <textarea id="edit-about-text" rows="6" class="admin-input"></textarea>
+                        <button onclick="saveContentSettings()" class="bg-green-600 text-white px-6 py-2 rounded font-bold mt-2">Kaydet</button>
+                    </div>
+                </div>
+
+                <div id="admin-contact-tab" class="admin-tab hidden">
+                    <h2 class="text-2xl font-bold mb-6 text-gray-800">İletişim Bilgileri</h2>
+                    <div class="bg-white p-6 rounded-lg shadow space-y-4">
+                        <label class="block font-bold mb-1">Telefon</label>
+                        <input type="text" id="edit-phone" class="admin-input">
+                        <label class="block font-bold mb-1">E-posta</label>
+                        <input type="text" id="edit-email" class="admin-input">
+                        <label class="block font-bold mb-1">Adres</label>
+                        <input type="text" id="edit-address" class="admin-input">
+                        <button onclick="saveContactSettings()" class="bg-green-600 text-white px-6 py-2 rounded font-bold mt-2">Kaydet</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const defaultData = {
+            about: {
+                title: "Gelecek ve İnovasyon Derneği",
+                text: "Gelecek ve İnovasyon Derneği (Future and Innovation Association), Iğdır, Türkiye merkezli yeni bir sivil toplum kuruluşudur. Dernek, yerel, ulusal ve uluslararası projeler aracılığıyla gençleri ve eğitimcileri güçlendirmeyi hedeflemektedir. Çalışma alanları arasında eğitim, sosyal içermeye yönelik projeler, girişimcilik, yenilikçilik ve yaşam boyu öğrenme bulunmaktadır."
+            },
+            contact: {
+                phone: "+90 506 207 38 51",
+                email: "info@gelecekinovasyon.org",
+                address: "Iğdır Merkez, Iğdır / Türkiye, 76000"
+            }
+        };
+
+        let appData = JSON.parse(localStorage.getItem('gelecekDB')) || defaultData;
+
+        function saveDB() {
+            localStorage.setItem('gelecekDB', JSON.stringify(appData));
+            renderPublicSite();
+        }
+
+        function renderPublicSite() {
+            document.getElementById('dynamic-about-title').innerText = appData.about.title;
+            document.getElementById('dynamic-about-text').innerText = appData.about.text;
+            document.querySelectorAll('.dynamic-phone').forEach(el => el.innerText = appData.contact.phone);
+            document.querySelectorAll('.dynamic-email').forEach(el => el.innerText = appData.contact.email);
+            document.querySelectorAll('.dynamic-address').forEach(el => el.innerText = appData.contact.address);
+        }
+
+        function toggleMobileMenu() {
+            const overlay = document.getElementById('mobile-menu-overlay');
+            const menu = document.getElementById('mobile-menu');
+            overlay.classList.toggle('hidden');
+            menu.classList.toggle('translate-x-full');
+        }
+
+        let curSlide = 0;
+        const slides = [];
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.slide').forEach(slide => slides.push(slide));
+            setInterval(() => changeSlide(1), 6000);
+        });
+
+        function changeSlide(dir) {
+            if (!slides.length) return;
+            slides[curSlide].classList.remove('active');
+            curSlide = (curSlide + dir + slides.length) % slides.length;
+            slides[curSlide].classList.add('active');
+        }
+
+        function handleLogin(e) {
+            e.preventDefault();
+            const u = document.getElementById('username').value;
+            const p = document.getElementById('password').value;
+            if (u === 'admin' && p === '1234') {
+                document.getElementById('login-view').classList.add('hidden');
+                document.getElementById('admin-view').classList.remove('hidden');
+                initAdminForms();
+            } else {
+                Swal.fire('Hata', 'Giriş başarısız!', 'error');
+            }
+        }
+
+        function showLogin() { document.getElementById('login-view').classList.remove('hidden'); }
+        function showPublic() { document.getElementById('admin-view').classList.add('hidden'); document.getElementById('login-view').classList.add('hidden'); }
+
+        function switchAdminTab(tabName) {
+            document.querySelectorAll('.admin-tab').forEach(t => t.classList.add('hidden'));
+            document.getElementById(`admin-${tabName}-tab`).classList.remove('hidden');
+        }
+
+        function initAdminForms() {
+            document.getElementById('edit-about-title').value = appData.about.title;
+            document.getElementById('edit-about-text').value = appData.about.text;
+            document.getElementById('edit-phone').value = appData.contact.phone;
+            document.getElementById('edit-email').value = appData.contact.email;
+            document.getElementById('edit-address').value = appData.contact.address;
+        }
+
+        function saveContentSettings() {
+            appData.about.title = document.getElementById('edit-about-title').value;
+            appData.about.text = document.getElementById('edit-about-text').value;
+            saveDB();
+            Swal.fire('Başarılı', 'İçerik güncellendi!', 'success');
+        }
+
+        function saveContactSettings() {
+            appData.contact.phone = document.getElementById('edit-phone').value;
+            appData.contact.email = document.getElementById('edit-email').value;
+            appData.contact.address = document.getElementById('edit-address').value;
+            saveDB();
+            Swal.fire('Başarılı', 'İletişim bilgileri güncellendi!', 'success');
+        }
+
+        renderPublicSite();
+    </script>
+</body>
+</html>

@@ -2,6 +2,7 @@
   "name": "kpss-bildirim-sistemi",
   "version": "1.0.0",
   "description": "KPSS ilanlarına göre otomatik bildirim sistemi",
+  "type": "module",
   "main": "index.js",
   "scripts": {
     "start": "node index.js"
